@@ -14,13 +14,11 @@ class Manufacturer {
         result(err, null);
         return;
       }
-      console.log("data insert: ", { id: res.insertId, ...manufacturer });
       result(null, { id: res.insertId, ...manufacturer });
     });
   }
 
   static get(id, result) {
-    console.log("id", id);
     let query = "SELECT * FROM MANUFACTURER";
     if (id) query += ` WHERE id=${id}`;
     sql.query(query, (err, res) => {
