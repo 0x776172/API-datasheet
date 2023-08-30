@@ -1,4 +1,4 @@
-const sql = require("./db.model.js")
+const supabase = require("./db.model.js")
 
 
 class Manufacturer {
@@ -7,31 +7,22 @@ class Manufacturer {
     this.name = manufacturer.name;
   }
 
-  static create(manufacturer, result) {
-    sql.query(`INSERT INTO MANUFACTURER(code_name, name) VALUE ('${manufacturer.codeName}', '${manufacturer.name}')`, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-      result(null, { id: res.insertId, ...manufacturer });
-    });
+  static async create(manufacturer, result) {
+    const { error } = await supabase
+      .from("manufacturer")
+      .insert({
+        code_name: manufacturer.codeName,
+        name: manufacturer.name
+      })
+    result(error, { status: error ? error.code : 200, message: error ? error.message : "Insert Success" });
   }
 
-  static get(id, result) {
-    let query = "SELECT * FROM MANUFACTURER";
-    if (id) query += ` WHERE id=${id}`;
-    sql.query(query, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-      result(null, res);
-    });
+  static async get(id, result) {
+    const cmd = supabase.from("manufacturer").select()
+    if (id) cmd.eq("id", id)
+    const res = await cmd
+    result(res.error, res.data);
   }
 }
-
-
 
 module.exports = Manufacturer

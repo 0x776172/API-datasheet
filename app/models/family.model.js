@@ -1,4 +1,4 @@
-const sql = require("./db.model.js")
+const supabase = require("./db.model.js")
 
 class Family {
   constructor(family) {
@@ -7,28 +7,22 @@ class Family {
     this.desc = family.desc
   }
 
-  static create(family, result) {
-    sql.query(`INSERT INTO product_family(m_id, name, description) VALUES (${family.mId}, '${family.name}', '${family.desc}')`, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-      result(null, { id: res.insertId, ...family });
-    });
+  static async create(family, result) {
+    const { error } = await supabase
+      .from("product_family")
+      .insert({
+        m_id: family.mId,
+        name: family.name,
+        description: family.desc
+      })
+    result(error, { status: error ? error.code : 200, message: error ? error.message : "Insert Success" });
   }
 
-  static get(id, result) {
-    let query = "SELECT * FROM product_family";
-    if (id) query += ` WHERE id=${id}`;
-    sql.query(query, (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
-      result(null, res);
-    });
+  static async get(id, result) {
+    const cmd = supabase.from("product_family").select()
+    if (id) cmd.eq("id", id)
+    const res = await cmd
+    result(res.error, res.data);
   }
 }
 

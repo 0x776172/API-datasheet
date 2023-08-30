@@ -4,13 +4,14 @@ class Method {
   constructor() { }
 
   static create(req, res) {
-    if (!req.body) {
+    if (!req.body.mId) {
       res.status(400).send({
         status: 400,
         message: "Content cannot be empty!"
       });
+      return
     }
-    const f = new Family({ mId: req.body.mId, name: req.body.name, desc: req.body.desc })
+    const f = new Family({ mId: req.body.mId, name: req.body.name, description: req.body.desc })
     Family.create(f, (status, data) => {
       if (status) {
         res.status(500).send({ message: "error" })
