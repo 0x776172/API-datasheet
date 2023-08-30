@@ -11,17 +11,21 @@ class Method {
       });
       return
     }
-    const f = new Family({ mId: req.body.mId, name: req.body.name, description: req.body.desc })
+    const f = new Family({
+      mId: req.body.mId,
+      name: req.body.name,
+      desc: req.body.desc
+    })
     Family.create(f, (status, data) => {
       if (status) {
-        res.status(500).send({ message: "error" })
+        res.status(500).send({ message: status.message })
       }
       else res.send(data)
     })
   }
 
   static get(req, res) {
-    Family.get(req.query.id, (err, family) => {
+    Family.get(req.params.id, (err, family) => {
       if (err) {
         res.status(400).send({
           message: err.message

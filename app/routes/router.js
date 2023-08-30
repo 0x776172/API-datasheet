@@ -12,13 +12,13 @@ router.post('/families', family.create)
 router.get('/families', family.get)
 router.get('/families/:id', family.get)
 
-router.post('/products', (req, res) => { res.send("post to products coming soon") })
-router.get('/products', (req, res) => { res.send("get products coming soon") })
+router.post('/products', product.create)
+router.get('/products', product.get)
+router.get('/products/:id', product.get)
 
-router.post('/descriptions',
-  (req, res) => { res.send("post to descriptions coming soon") })
-router.get('/descriptions',
-  (req, res) => { res.send("get descriptions coming soon") })
+router.post('/descriptions', desc.create)
+router.get('/descriptions', desc.get)
+router.get('/descriptions/:id', desc.get)
 
 
 module.exports = router

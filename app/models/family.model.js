@@ -15,7 +15,10 @@ class Family {
         name: family.name,
         description: family.desc
       })
-    result(error, { status: error ? error.code : 200, message: error ? error.message : "Insert Success" });
+    result(error, {
+      status: error ? error.code : 200,
+      message: error ? error.message : "Insert Success"
+    });
   }
 
   static async get(id, result) {
