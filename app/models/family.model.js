@@ -2,18 +2,20 @@ const supabase = require("./db.model.js")
 
 class Family {
   constructor(family) {
-    this.mId = family.mId;
+    this.manufacturer_code_name = family.manufacturer_code_name;
+    this.code_name = family.code_name;
     this.name = family.name;
-    this.desc = family.desc
+    this.description = family.description
   }
 
   static async create(family, result) {
     const { error } = await supabase
       .from("product_family")
       .insert({
-        m_id: family.mId,
+        manufacturer_code_name: family.manufacturer_code_name,
+        code_name: family.code_name,
         name: family.name,
-        description: family.desc
+        description: family.description
       })
     result(error, {
       status: error ? error.code : 200,

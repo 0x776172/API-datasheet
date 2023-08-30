@@ -4,7 +4,7 @@ class method {
   constructor() { }
 
   static create(req, res) {
-    if (!req.body.codeName) {
+    if (!req.body.product_code_name) {
       res.status(400).send({
         status: 400,
         message: "Content cannot be empty!"
@@ -12,9 +12,9 @@ class method {
       return
     }
     const d = new Description({
-      pId: req.body.pId,
-      desc: req.body.desc,
-      spec: req.body.spec
+      product_code_name: req.body.product_code_name,
+      description: req.body.description,
+      specification: req.body.specification
     })
     Description.create(d, (status, data) => {
       if (status) {

@@ -14,7 +14,6 @@ router.get('/families/:id', family.get)
 
 router.post('/products', product.create)
 router.get('/products', product.get)
-router.get('/products/:id', product.get)
 
 router.post('/descriptions', desc.create)
 router.get('/descriptions', desc.get)

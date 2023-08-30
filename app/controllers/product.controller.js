@@ -4,7 +4,7 @@ class method {
   constructor() { }
 
   static create(req, res) {
-    if (!req.body.mId) {
+    if (!req.body.family_code_name) {
       res.status(400).send({
         status: 400,
         message: "Content cannot be empty!"
@@ -12,8 +12,10 @@ class method {
       return
     }
     const p = new Product({
-      famId: req.body.famId,
-      name: req.body.name
+      family_code_name: req.body.family_code_name,
+      code_name: req.body.code_name,
+      name: req.body.name,
+      product_type: req.body.product_type
     })
 
     Product.create(p, (status, data) => {
@@ -25,7 +27,8 @@ class method {
   }
 
   static get(req, res) {
-    Product.get(req.params.id, (err, product) => {
+    console.log(req.query)
+    Product.get(req.query, (err, product) => {
       if (err) {
         res.status(400).send({ message: err.message })
       }

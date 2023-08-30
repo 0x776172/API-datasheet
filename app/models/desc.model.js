@@ -2,18 +2,18 @@ const supabase = require("./db.model.js")
 
 class Description {
   constructor(description) {
-    this.pId = description.pId;
-    this.desc = description.desc;
-    this.spec = description.spec;
+    this.product_code_name = description.product_code_name;
+    this.description = description.description;
+    this.specification = description.specification;
   }
 
   static async create(desc, result) {
     const { error } = await supabase
       .from("product_description")
       .insert({
-        prod_id: desc.pId,
-        description: desc.desc,
-        specification: desc.spec
+        product_code_name: desc.product_code_name,
+        description: desc.description,
+        specification: desc.specification
       })
     result(error, { status: error ? error.code : 200, message: error ? error.message : "Insert Success" });
   }
