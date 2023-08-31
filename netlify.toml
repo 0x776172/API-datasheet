@@ -2,3 +2,5 @@
   functions = "functions"
 [dev]
   publish="dist"
+[functions]
+  external_node_modules = ["express"]
