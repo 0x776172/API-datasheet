@@ -12,3 +12,9 @@
   targetPort = 5000
   functions = "./functions"
   publish = "./dist"
+
+[[redirects]]
+force = true
+from = "/api/*"
+status = 200
+to = "/.netlify/functions/api/:splat"

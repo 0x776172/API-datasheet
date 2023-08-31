@@ -7,7 +7,7 @@ const serverless = require("serverless-http")
 const app = express()
 app.use(express.json())
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send("Welcome!")
 })
 
