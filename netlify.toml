@@ -14,7 +14,7 @@
   publish = "./dist"
 
 [[redirects]]
-force = true
-from = "/api/datasheet/*"
-status = 200
-to = "/.netlify/functions/api/datasheet/:splat"
+  force = true
+  from = "/api/datasheet/*"
+  status = 200
+  to = "/.netlify/functions/api/datasheet/:splat"

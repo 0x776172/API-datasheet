@@ -4,6 +4,7 @@ const family = require("../controllers/family.controller.js")
 const product = require("../controllers/product.controller.js")
 const desc = require("../controllers/desc.controller.js")
 
+router.post('/', (req, res) => res.send("Hello, Choose your data"))
 router.post('/manufacturers', manufacturer.create)
 router.get('/manufacturers', manufacturer.get)
 router.get('/manufacturers/:id', manufacturer.get)
