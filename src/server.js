@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
 
 app.use("api/datasheet", router)
 
-app.listen(5000, () => {
-  console.log(`Connected to port ${config.PORT}`)
-})
+// app.listen(5000, () => {
+//   console.log(`Connected to port ${config.PORT}`)
+// })
 
 module.exports = app
 module.exports.handler = serverless(app)
