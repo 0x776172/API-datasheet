@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "netlify-lambda serve src",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider netlify functions:build"
+    "dev": "node src/server.js",
+    "build": "node src/server.js"
   },
   "author": "",
   "license": "ISC",
