@@ -7,11 +7,11 @@ const serverless = require("serverless-http")
 const app = express()
 app.use(express.json())
 
-app.get('/api', (req, res) => {
-  res.send("Welcome!")
-})
+// app.get('/api', (req, res) => {
+//   res.send("Welcome!")
+// })
 
-app.use("api/datasheet", router)
+app.use("/api/datasheet", router)
 
 // app.listen(5000, () => {
 //   console.log(`Connected to port ${config.PORT}`)

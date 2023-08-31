@@ -15,6 +15,6 @@
 
 [[redirects]]
 force = true
-from = "/api/*"
+from = "/api/datasheet/*"
 status = 200
-to = "/.netlify/functions/api/:splat"
+to = "/.netlify/functions/api/datasheet/:splat"
