@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send("Welcome!")
 })
 
-app.use("/api/datasheet", router)
+app.use(".netlify/api/datasheet", router)
 
 app.listen(config.PORT, () => {
   console.log(`Connected to port ${config.PORT}`)
