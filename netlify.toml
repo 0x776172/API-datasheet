@@ -4,7 +4,6 @@
 [build]
   command = "echo Building Function"
   functions = "./src"
-  targetPort = 5000
   publish = "./dist"
 
 [dev]
