@@ -16,4 +16,4 @@
   force = true
   from = "/api/datasheet/*"
   status = 200
-  to = "/.netlify/functions/api/datasheet/:splat"
+  to = "/.netlify/functions/server/api/datasheet/:splat"
