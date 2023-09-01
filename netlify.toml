@@ -11,9 +11,3 @@
   targetPort = 5000
   functions = "./functions"
   publish = "./dist"
-
-[[redirects]]
-  force = true
-  from = "/api/datasheet/*"
-  status = 200
-  to = "/.netlify/functions/server/api/datasheet/:splat"
