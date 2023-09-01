@@ -2,7 +2,7 @@ const supabase = require("./db.model.js")
 
 class Manufacturer {
   constructor(manufacturer) {
-    this.codeName = manufacturer.codeName;
+    this.code_name = manufacturer.code_name;
     this.name = manufacturer.name;
   }
 
@@ -10,7 +10,7 @@ class Manufacturer {
     const { error } = await supabase
       .from("product_manufacturer")
       .insert({
-        code_name: manufacturer.codeName,
+        code_name: manufacturer.code_name,
         name: manufacturer.name
       })
     result(error, {

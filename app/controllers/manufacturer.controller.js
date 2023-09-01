@@ -4,14 +4,14 @@ class method {
   constructor() { }
 
   static create(req, res) {
-    if (!req.body.codeName) {
+    if (!req.body.code_name) {
       res.status(400).send({
         status: 400,
         message: "Content cannot be empty!"
       });
       return
     }
-    const m = new Manufacturer({ codeName: req.body.codeName, name: req.body.name })
+    const m = new Manufacturer({ code_name: req.body.code_name, name: req.body.name })
     Manufacturer.create(m, (status, data) => {
       if (status) {
         res.status(500).send({ status: 500, message: status.message })
